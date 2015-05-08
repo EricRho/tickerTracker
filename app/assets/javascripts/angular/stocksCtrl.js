@@ -1,7 +1,8 @@
 app.controller('stocksCtrl', ['$scope', 'Stock', function($scope, Stock) {
   $scope.stocks = Stock.all();
 
-  $scope.deleteStock = function(idx) {
+  $scope.deleteStock = function(id, idx) {
     $scope.stocks.splice(idx, 1);
+    return Stock.delete(id);
   }
 }]);
