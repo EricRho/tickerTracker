@@ -16,4 +16,5 @@
 //= require main.js
 //= require jquery
 //= require jquery_ujs
+//= require_tree ./angular
 //= require_tree .
