@@ -11,6 +11,7 @@ class StocksController < ApplicationController
 
   def create
     respond_with Stock.create(stock_params)
+
   end
 
   private

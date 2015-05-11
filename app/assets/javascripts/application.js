@@ -13,6 +13,7 @@
 
 //= require angular
 //= require angular-resource
+//= require select2
 //= require main.js
 //= require jquery
 //= require jquery_ujs
