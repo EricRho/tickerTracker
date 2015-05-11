@@ -5,8 +5,8 @@
 
   <form ng-submit='createStock()'>
     <select ui-select2='select2Options' ng-model='newCompany', data-placeholder='Search Companies', ng-required='true'>
-    <option value=''></option>
-    <option ng-repeat='company in companyList' value=''></option>
+      <option value=''></option>
+      <option ng-repeat='stock in stocklist' value=''></option>
     <input type='submit' value='Follow'>
   </form>
   {{ newCompany }}

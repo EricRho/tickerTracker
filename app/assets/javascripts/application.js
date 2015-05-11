@@ -12,8 +12,8 @@
 //
 
 //= require angular
-//= require angular-resource
 //= require select2
+//= require angular-resource
 //= require angular-ui-select2
 //= require main.js
 //= require jquery
