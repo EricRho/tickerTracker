@@ -11,7 +11,10 @@ class StocksController < ApplicationController
 
   def create
     respond_with Stock.create(stock_params)
+  end
 
+  def update
+    respond_with Stock.find(params[:id]).update_attributes(stock_params)
   end
 
   private
