@@ -18,19 +18,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   };
 
   $scope.select2Options = {
-    'ajax': {
-      type: 'GET',
-      url: 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22AAPL%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=quote',
-      dataType: 'jsonp',
-      jsonp: 'callback',
-      jsonCallback: 'quote'
-    }
   };
-  $scope.stocklist = [
-    {symbol: 'ARRY', name: 'Array Biopharma Inc.'},
-    {symbol: 'MSFT', name: 'Microsoft Corporation'},
-    {symbol: 'SNY', name: 'Sanofi'}
-  ];
 
   $scope.$watch('newCompany', function() {
     if ($scope.newCompany !== '' && $scope.newCompany !== undefined) {
