@@ -18,13 +18,24 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   };
 
   $scope.select2Options = {
+    'ajax': {
+      url: 'api/derivatives.json',
+      dataType: 'json',
+      data: function(term, page) {
+        return { q: term };
+      },
+      results: function(data, page) {
+        console.log(data);
+        return { results: data };
+      }
+    }
   };
 
-  $scope.$watch('newCompany', function() {
-    if ($scope.newCompany !== '' && $scope.newCompany !== undefined) {
-      $scope.createStock();
-    }
-  });
+  // $scope.$watch('newCompany', function() {
+  //   if ($scope.newCompany !== '' && $scope.newCompany !== undefined) {
+  //     $scope.createStock();
+  //   }
+  // });
 
   $scope.getStockData = function(symbol) {
     var deferred = $q.defer();
