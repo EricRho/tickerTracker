@@ -24,9 +24,9 @@
       <ul>
         <li ng-repeat='stock in stocks'>
           <strong>{{ stock.symbol }}</strong> {{ stock.name }} <br/>
-          <strong>Bid:</strong> {{ stock.bid }}<br/>
-          <strong>Ask:</strong>{{ stock.ask }}<br/>
-          <strong>Change:</strong> {{ stock.change }}<br/>
+          <strong>Bid:</strong> {{ stock.bid | currency }}<br/>
+          <strong>Ask:</strong>{{ stock.ask | currency }}<br/>
+          <strong>Change:</strong> {{ stock.change  }}<br/>
           <strong>Percent:</strong> {{ stock.change_in_percent }}<br/>
           <a href='' ng-click='updateStock(stock.id, $index)'>Update</a>
           <a href='' ng-click='deleteStock(stock.id, $index)' id='delete'>Delete</a>

@@ -49,7 +49,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
         stock.ask = data.query.results.quote.Ask;
         stock.bid = data.query.results.quote.Bid;
         stock.change = data.query.results.quote.Change;
-        stock.change_in_percent = data.query.results.quote.Change_In_Percent;
+        stock.change_in_percent = data.query.results.quote.ChangeinPercent;
         $scope.loading = false;
         deferred.resolve(stock);
       }).error(function(data, status, headers, config) {
