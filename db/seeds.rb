@@ -25,7 +25,14 @@ Stock.delete_all
 #   end
 # end
 
-# Derivative.create!(symbol: 'SNY', name: 'Sanofi')
-# Derivative.create!(symbol: 'LLY', name: 'Eli Lilly and Company')
-# Derivative.create!(symbol: 'MRK', name: 'Merck & Co. Inc.')
-# Derivative.create!(symbol: 'CG', name: 'The Carlyle Group')
+Derivative.delete_all
+
+
+
+# Derivative.create!(symbol: 'AAPL', name: 'Apple')
+# Derivative.create!(symbol: 'MSFT', name: 'Microsoft')
+# Derivative.create!(symbol: 'GOOG', name: 'Google')
+# Derivative.create!(symbol: "BARC.L", name: 'Barclays')
+# Derivative.create!(symbol: 'TWTR', name: 'Twitter')
+# Derivative.create!(symbol: 'FB', name: 'Facebook')
+# Derivative.create!(symbol: "SIE.DE", name: "Siemens")

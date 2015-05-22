@@ -9,27 +9,33 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
 
   $scope.createStock = function() {
     $scope.getStockData($filter('uppercase')($scope.newCompany))
-    .then(function(result) {
-      $scope.error = false;
-      $scope.stocks.push(Stock.create(result));
-    }, function(error) {
-      $scope.error = true;
-    });
+      .then(function(result) {
+        $scope.error = false;
+        $scope.stocks.push(Stock.create(result));
+        $scope.newCompany = '';
+      }, function(error) {
+        $scope.error = true;
+      });
   };
 
   $scope.select2Options = {
-    'ajax': {
-      url: 'api/derivatives.json',
-      dataType: 'json',
-      data: function(term, page) {
-        return { q: term };
-      },
-      results: function(data, page) {
-        console.log(data);
-        return { results: data };
-      }
-    }
+    // 'ajax': {
+    //   url: '/api/derivatives.json',
+    //   dataType: 'json',
+    //   data: function(term, page) {
+    //     return { q: term};
+    //   },
+    //   results: function(data, page) {
+    //     console.log(data);
+    //     return { results: data };
+    //   }
+    // }
   };
+
+  $scope.derivatives =
+  [{ symbol: 'MNKD', name: 'Mannkind'},
+  { symbol: 'AAPL', name: 'Apple Inc'}];
+
 
   // $scope.$watch('newCompany', function() {
   //   if ($scope.newCompany !== '' && $scope.newCompany !== undefined) {
@@ -41,7 +47,10 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     var deferred = $q.defer();
     var stock = {};
     $scope.loading = true;
-    $http({ method: 'GET', url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22' + "'" + symbol + "'" + '%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='})
+    $http({
+        method: 'GET',
+        url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22' + "'" + symbol + "'" + '%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
+      })
       .success(function(data, status, headers, config) {
         stock.symbol = symbol;
         stock.name = data.query.results.quote.Name;
@@ -55,20 +64,20 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
         $scope.loading = false;
         deferred.reject(status);
       });
-      return deferred.promise;
+    return deferred.promise;
   };
 
   $scope.updateStock = function(id, idx) {
     var stock = $scope.stocks[idx];
     $scope.getStockData(stock.symbol)
-    .then(function(result) {
-      $scope.error = false;
-      result.id = stock.id;
-      Stock.update(result);
-      $scope.stocks[idx] = result;
-    }, function(error) {
-      $scope.error = true;
-    });
+      .then(function(result) {
+        $scope.error = false;
+        result.id = stock.id;
+        Stock.update(result);
+        $scope.stocks[idx] = result;
+      }, function(error) {
+        $scope.error = true;
+      });
   };
 
 }]);
