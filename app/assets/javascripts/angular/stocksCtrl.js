@@ -32,12 +32,6 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
       });
   };
 
-  // $scope.$watch('newCompany', function() {
-  //   if ($scope.newCompany !== '' && $scope.newCompany !== null) {
-  //     $scope.createStock();
-  //   }
-  // });
-
   $scope.$watch('newCompany', function() {
     if ($scope.newCompany !== '' && $scope.newCompany !== null) {
       $scope.createStock();

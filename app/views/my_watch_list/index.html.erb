@@ -4,10 +4,7 @@
   <div ng-controller='stocksCtrl'>
 
     <div id='findSymbol' class='small-4 columns'>
-
-      <form ng-submit='createStock()'>
-        <input ui-select2='select2Options' ng-model='newCompany', data-placeholder='Search Company Symbol', ng-required='true', style='width: 200px'>
-      </form>
+        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company Symbol' ng-required='true' style='width: 200px'>
       <p>
         {{ newCompany.name }}
         {{ newCompany.symbol }}
