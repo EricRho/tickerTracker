@@ -1,5 +1,4 @@
 <h1>MyWatchList#index</h1>
-<p>Find me in app/views/my_watch_list/index.html.erb</p>
 
 <div class='row' class='container'>
   <div ng-controller='stocksCtrl'>
@@ -7,13 +6,25 @@
       <!-- <form ng-submit='createStock()'>
         <input ui-select2='select2Options' ng-model='newCompany', placeholder='Search Companies', ng-required='true' id='companyForm' style='width:200px'>
         <input type='submit' value='Follow'>
+      </form>
+ -->
+      <!-- <form ng-submit='createStock()'>
+        <select ui-select2='select2Options' ng-model='newCompany', placeholder='Search Symbols', ng-require='true' id='companyForm' style='width:200px'>
+          <option value=''></option>
+          <option ng-repeat='stock in stocklist'></option>
+          <input type='submit' value='Follow'>
+        </select>
       </form> -->
-
       <form ng-submit='createStock()'>
+        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company Symbol', ng-required='true' style='width: 200px'>
+        <input type='submit'>
+      </form>
+
+      <!-- <form ng-submit='createStock()'>
         <input ui-select2='select2Options' ng-model='newCompany', data-placeholder='Search Company Symbol', ng-required='true' style='width: 200px'>
         <input type='submit' value='follow'>
       </form>
-      {{ newCompany }}
+ -->      {{ newCompany.name }}
 
       <div ng-show='loading' id='loading'>
         Loading...

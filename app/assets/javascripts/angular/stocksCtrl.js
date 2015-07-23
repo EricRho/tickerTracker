@@ -8,7 +8,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   };
 
   $scope.createStock = function() {
-    $scope.getStockData($filter('uppercase')($scope.newCompany))
+    $scope.getStockData($filter('uppercase')($scope.newCompany['symbol']))
       .then(function(result) {
         $scope.error = false;
         $scope.stocks.push(Stock.create(result));
@@ -18,24 +18,33 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
       });
   };
 
+  // $scope.select2Options = function() {
+  //   $http.get('api/derivatives.json');
+  // };
+
   $scope.select2Options = {
-    // 'ajax': {
-    //   url: '/api/derivatives.json',
-    //   dataType: 'json',
-    //   data: function(term, page) {
-    //     return { q: term};
-    //   },
-    //   results: function(data, page) {
-    //     console.log(data);
-    //     return { results: data };
-    //   }
-    // }
+    'ajax': {
+      url: '/api/derivatives.json',
+      dataType: 'json',
+      data: function(term, page) {
+        return { q: term};
+      },
+      results: function(data, page) {
+        console.log(data);
+        return { results: data };
+      }
+    }
   };
 
-  $scope.derivatives =
-  [{ symbol: 'MNKD', name: 'Mannkind'},
-  { symbol: 'AAPL', name: 'Apple Inc'}];
+  $scope.stocklist = [
+    { symbol: 'MNKD', name: 'Mannkind'},
+    { symbol: 'AAPL', name: 'Apple Inc'},
+    { symbol: 'AMZN', name: 'Amazon.com Inc.'}
+    ];
 
+  // $scope.derivatives = function(){
+  //   $http.get('/api/derivatives.json');
+  // };
 
   // $scope.$watch('newCompany', function() {
   //   if ($scope.newCompany !== '' && $scope.newCompany !== undefined) {
@@ -49,7 +58,9 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     $scope.loading = true;
     $http({
         method: 'GET',
-        url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22' + "'" + symbol + "'" + '%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
+        url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22' +
+          "'" + symbol + "'" +
+          '%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
       })
       .success(function(data, status, headers, config) {
         stock.symbol = symbol;

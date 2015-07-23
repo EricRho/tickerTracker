@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 gem 'angularjs-rails'
 
 # For UI changes
-
+gem 'angular-ui-select2-rails'
 
 # For use in scraping data for derivative db
 gem 'httparty'
