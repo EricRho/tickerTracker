@@ -2,26 +2,6 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   $scope.stocks = Stock.all();
   $scope.error = false;
 
-  $scope.deleteStock = function(id, idx) {
-    $scope.stocks.splice(idx, 1);
-    return Stock.delete(id);
-  };
-
-  $scope.createStock = function() {
-    $scope.getStockData($filter('uppercase')($scope.newCompany['symbol']))
-      .then(function(result) {
-        $scope.error = false;
-        $scope.stocks.push(Stock.create(result));
-        $scope.newCompany = '';
-      }, function(error) {
-        $scope.error = true;
-      });
-  };
-
-  // $scope.select2Options = function() {
-  //   $http.get('api/derivatives.json');
-  // };
-
   $scope.select2Options = {
     'ajax': {
       url: '/api/derivatives.json',
@@ -36,21 +16,33 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     }
   };
 
-  $scope.stocklist = [
-    { symbol: 'MNKD', name: 'Mannkind'},
-    { symbol: 'AAPL', name: 'Apple Inc'},
-    { symbol: 'AMZN', name: 'Amazon.com Inc.'}
-    ];
+  $scope.deleteStock = function(id, idx) {
+    $scope.stocks.splice(idx, 1);
+    return Stock.delete(id);
+  };
 
-  // $scope.derivatives = function(){
-  //   $http.get('/api/derivatives.json');
-  // };
+  $scope.createStock = function() {
+    $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
+      .then(function(result) {
+        $scope.error = false;
+        $scope.stocks.push(Stock.create(result));
+        $scope.newCompany = '';
+      }, function(error) {
+        $scope.error = true;
+      });
+  };
 
   // $scope.$watch('newCompany', function() {
-  //   if ($scope.newCompany !== '' && $scope.newCompany !== undefined) {
+  //   if ($scope.newCompany !== '' && $scope.newCompany !== null) {
   //     $scope.createStock();
   //   }
   // });
+
+  $scope.$watch('newCompany', function() {
+    if ($scope.newCompany !== '' && $scope.newCompany !== null) {
+      $scope.createStock();
+    }
+  });
 
   $scope.getStockData = function(symbol) {
     var deferred = $q.defer();

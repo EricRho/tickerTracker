@@ -2,46 +2,36 @@
 
 <div class='row' class='container'>
   <div ng-controller='stocksCtrl'>
-    <div id='findSymbol' class='small-4 columns'>
 
-      <!-- <form ng-submit='createStock()'>
-        <select ui-select2='select2Options' ng-model='newCompany', placeholder='Search Symbols', ng-require='true' id='companyForm' style='width:200px'>
-          <option value=''></option>
-          <option ng-repeat='stock in stocklist'></option>
-          <input type='submit' value='Follow'>
-        </select>
-      </form> -->
+    <div id='findSymbol' class='small-4 columns'>
 
       <form ng-submit='createStock()'>
         <input ui-select2='select2Options' ng-model='newCompany', data-placeholder='Search Company Symbol', ng-required='true', style='width: 200px'>
-        <option value=''></option>
       </form>
-
-      <!-- <form ng-submit='createStock()'>
-        <input ui-select2='select2Options' ng-model='newCompany', data-placeholder='Search Company Symbol', ng-required='true' style='width: 200px'>
-        <input type='submit' value='follow'>
-      </form>
- -->
-
-      <div ng-show='loading' id='loading'>
-        Loading...
-      </div>
-
-      <div ng-show='error'>
-        There was an error reaching the API
-      </div>
-
-      <ul>
-        <li ng-repeat='stock in stocks'>
-          <strong>{{ stock.symbol }}</strong> {{ stock.name }} <br/>
-          <strong>Bid:</strong> {{ stock.bid | currency }}<br/>
-          <strong>Ask:</strong>{{ stock.ask | currency }}<br/>
-          <strong>Change:</strong> {{ stock.change  }}<br/>
-          <strong>Percent:</strong> {{ stock.change_in_percent }}<br/>
-          <a href='' ng-click='updateStock(stock.id, $index)'>Update</a>
-          <a href='' ng-click='deleteStock(stock.id, $index)' id='delete'>Delete</a>
-        </li>
-      </ul>
+      <p>
+        {{ newCompany.name }}
+        {{ newCompany.symbol }}
+      </p>
     </div>
+
+    <div ng-show='loading' id='loading'>
+      Loading...
+    </div>
+
+    <div ng-show='error'>
+      There was an error reaching the API
+    </div>
+
+    <ul>
+      <li ng-repeat='stock in stocks'>
+        <strong>{{ stock.symbol }}</strong> {{ stock.name }} <br/>
+        <strong>Bid:</strong> {{ stock.bid | currency }}<br/>
+        <strong>Ask:</strong>{{ stock.ask | currency }}<br/>
+        <strong>Change:</strong> {{ stock.change  }}<br/>
+        <strong>Percent:</strong> {{ stock.change_in_percent }}<br/>
+        <a href='' ng-click='updateStock(stock.id, $index)'>Update</a>
+        <a href='' ng-click='deleteStock(stock.id, $index)' id='delete'>Delete</a>
+      </li>
+    </ul>
   </div>
 </div>

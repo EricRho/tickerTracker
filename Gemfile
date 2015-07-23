@@ -33,6 +33,9 @@ gem 'angular-ui-select2-rails'
 # For use in scraping data for derivative db
 gem 'httparty'
 
+# Yahoo Finance API
+gem 'yahoo-finance'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
