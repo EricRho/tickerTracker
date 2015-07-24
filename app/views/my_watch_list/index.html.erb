@@ -4,11 +4,7 @@
   <div ng-controller='stocksCtrl'>
 
     <div id='findSymbol' class='small-4 columns'>
-        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company Symbol' ng-required='true' style='width: 200px'>
-      <p>
-        {{ newCompany.name }}
-        {{ newCompany.symbol }}
-      </p>
+        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company' ng-required='true' style='width: 200px'>
     </div>
 
     <div ng-show='loading' id='loading'>
@@ -16,7 +12,6 @@
     </div>
 
     <div ng-show='error'>
-      There was an error reaching the API
     </div>
 
     <ul>
