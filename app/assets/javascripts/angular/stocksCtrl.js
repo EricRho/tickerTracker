@@ -2,6 +2,8 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   $scope.stocks = Stock.all();
   $scope.error = false;
 
+  // Ajax call to populate Search bar.
+  // initSelection is to prevent error. No clue what it actually does
   $scope.select2Options = {
     initSelection: function(el, fn) {},
     'ajax': {
@@ -22,18 +24,8 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     return Stock.delete(id);
   };
 
-  // $scope.createStock = function() {
-  //   $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
-  //     .then(function(result) {
-  //       debugger;
-  //       $scope.error = false;
-  //       $scope.stocks.push(Stock.create(result));
-  //       $scope.newCompany = '';
-  //     }, function(error) {
-  //       $scope.error = true;
-  //     });
-  // };
-
+  // Hack around. createStock() keeps creating an extra stock with all params
+  // either undefined or nil. Throws errors and prevents creation of empty Stock
   $scope.createStock = function() {
     $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
       .then(function(result) {
@@ -42,16 +34,21 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
         } else {
           $scope.error = false;
           $scope.stocks.push(Stock.create(result));
+          $scope.newCompany = '';
         }
       });
   };
 
+  // Creates watcher for when user types in newCompany search.
+  // Once change is noticed, creates stock. Issue here. Creates extra emtpy Stock.
   $scope.$watch('newCompany', function() {
     if ($scope.newCompany != '' && $scope.newCompany != null) {
       $scope.createStock();
     }
   });
 
+  // Retrieves stock information from yahoofinance.
+  // using $http to send get request to API
   $scope.getStockData = function(symbol) {
     var deferred = $q.defer();
     var stock = {};
@@ -62,6 +59,8 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
           "'" + symbol + "'" +
           '%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback='
       })
+      // On success, iterates through to needed information and sets to current
+      // stock param
       .success(function(data, status, headers, config) {
         stock.symbol = symbol;
         stock.name = data.query.results.quote.Name;
@@ -78,14 +77,14 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     return deferred.promise;
   };
 
-  $scope.updateStock = function(id, idx) {
-    var stock = $scope.stocks[idx];
+  $scope.updateStock = function(id, data) {
+    var stock = $scope.stocks[data];
     $scope.getStockData(stock.symbol)
       .then(function(result) {
         $scope.error = false;
         result.id = stock.id;
         Stock.update(result);
-        $scope.stocks[idx] = result;
+        $scope.stocks[data] = result;
       }, function(error) {
         $scope.error = true;
       });
