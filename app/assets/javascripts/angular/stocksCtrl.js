@@ -3,6 +3,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   $scope.error = false;
 
   $scope.select2Options = {
+    initSelection: function(el, fn) {},
     'ajax': {
       url: '/api/derivatives.json',
       dataType: 'json',
@@ -33,7 +34,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   };
 
   $scope.$watch('newCompany', function() {
-    if ($scope.newCompany !== '' && $scope.newCompany !== null) {
+    if ($scope.newCompany != '' && $scope.newCompany != null) {
       $scope.createStock();
     }
   });
