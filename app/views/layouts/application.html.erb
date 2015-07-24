@@ -23,6 +23,9 @@
         </div>
       </nav>
     </nav>
+    <div ng-controller='clockCtrl' id='clock'>
+      {{ clock | date:'medium'}}
+    </div>
   </div>
 <%= yield %>
 
