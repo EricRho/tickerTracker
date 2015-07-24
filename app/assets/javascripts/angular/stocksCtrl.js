@@ -22,14 +22,27 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     return Stock.delete(id);
   };
 
+  // $scope.createStock = function() {
+  //   $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
+  //     .then(function(result) {
+  //       debugger;
+  //       $scope.error = false;
+  //       $scope.stocks.push(Stock.create(result));
+  //       $scope.newCompany = '';
+  //     }, function(error) {
+  //       $scope.error = true;
+  //     });
+  // };
+
   $scope.createStock = function() {
     $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
       .then(function(result) {
-        $scope.error = false;
-        $scope.stocks.push(Stock.create(result));
-        $scope.newCompany = '';
-      }, function(error) {
-        $scope.error = true;
+        if (result.symbol === undefined) {
+          $scope.error = true;
+        } else {
+          $scope.error = false;
+          $scope.stocks.push(Stock.create(result));
+        }
       });
   };
 
