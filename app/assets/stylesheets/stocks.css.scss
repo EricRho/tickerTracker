@@ -2,6 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#clock {
+  color: #585858;
+  position: relative;
+  left: 30px;
+  margin-bottom: 10px;
+}
+
+#everything {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+// #tabs {
+//   display: inline;
+//   padding: 12px;
+//   border: 1px solid black;
+//   border-top-left-radius: 12px;
+//   border-top-right-radius: 12px;
+// }
+
+// .active {
+//   background-color: #7681d6;
+//   color: #000;
+//   border-bottom: none;
+// }
+
+div.ng-scope {
+  h1 {
+    position: relative;
+    text-align: center;
+  }
+}
+
+#mainView {
+  ul {
+    list-style-type: none;
+  }
+}
 
 div.row {
   margin-left: 10px;
