@@ -97,6 +97,9 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
   //     });
   // };
 
+  // Update will attempt to retrieve stock data from Yahoo Finance API
+  // based off the stock Symbol.
+  // Upon success, updates information into stock database
   $scope.updateStock = function(id, index) {
     var stock = $scope.stocks[index];
     $scope.getStockData(stock.symbol).then(function(result) {
@@ -108,6 +111,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     });
   };
 
+  // Retrieves Open, High, Low, Close graph from backend
   $scope.requestOHLC = function(stockid) {
     return Stock.ohlc(stockid);
   };
