@@ -14,7 +14,7 @@
     </div>
 
     <div class='span9' id='tabinfo' ng-controller='tabsCtrl'>
-      <ul class='nav nav-pills' id='alltabs'>
+      <ul class='nav nav-tabs' id='alltabs'>
         <li ng-repeat='tab in tabs' ng-class='{ active:isActiveTab(tab.url)}' ng-click='onClickTab(tab)' id='tabs' role='presentation'>
           <a>{{ tab.title }}</a>
         </li>

@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html, body {
+  width: 100%;
+  body {
+    overflow: hidden;
+  }
+}
+
 #clock {
   color: #585858;
   position: relative;
@@ -12,6 +19,14 @@
 #everything {
   margin-right: 20px;
   margin-left: 20px;
+}
+
+#findSymbol {
+  padding-bottom: 20px;
+}
+
+.nav-pills {
+
 }
 
 // #tabs {
