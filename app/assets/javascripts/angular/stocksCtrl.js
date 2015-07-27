@@ -10,17 +10,25 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
       url: '/api/derivatives.json',
       dataType: 'json',
       data: function(term, page) {
-        return { q: term};
+        return {
+          q: term
+        };
       },
       results: function(data, page) {
         console.log(data);
-        return { results: data };
+        return {
+          results: data
+        };
       }
     }
   };
 
-  $scope.deleteStock = function(id, idx) {
-    $scope.stocks.splice(idx, 1);
+  $scope.something = function() {
+    alert('hello');
+  };
+
+  $scope.deleteStock = function(id, index) {
+    $scope.stocks.splice(index, 1);
     return Stock.delete(id);
   };
 
@@ -77,17 +85,31 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     return deferred.promise;
   };
 
-  $scope.updateStock = function(id, data) {
-    var stock = $scope.stocks[data];
-    $scope.getStockData(stock.symbol)
-      .then(function(result) {
-        $scope.error = false;
-        result.id = stock.id;
-        Stock.update(result);
-        $scope.stocks[data] = result;
-      }, function(error) {
-        $scope.error = true;
-      });
+  // $scope.updateStock = function(id, data) {
+  //   var stock = $scope.stocks[data];
+  //   $scope.getStockData(stock.symbol).then(function(result) {
+  //       $scope.error = false;
+  //       result.id = stock.id;
+  //       Stock.update(result);
+  //       $scope.stocks[data] = result;
+  //     }, function(error) {
+  //       $scope.error = true;
+  //     });
+  // };
+
+  $scope.updateStock = function(id, index) {
+    var stock = $scope.stocks[index];
+    $scope.getStockData(stock.symbol).then(function(result) {
+      $scope.error = false;
+      result.id = stock.id;
+      $scope.stocks[index] = Stock.update(result);
+    }, function(error) {
+      $scope.error = true;
+    });
+  };
+
+  $scope.requestOHLC = function(stockid) {
+    return Stock.ohlc(stockid);
   };
 
 }]);

@@ -12,7 +12,6 @@
 //
 
 //= require jquery
-//= require jquery_ujs
 //= require angular
 //= require select2
 //= require angular-ui-select2
@@ -20,3 +19,4 @@
 //= require main.js
 //= require_tree ./angular
 //= require_tree .
+//= require highstock

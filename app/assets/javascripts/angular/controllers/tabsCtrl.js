@@ -17,6 +17,6 @@ app.controller('tabsCtrl', ['$scope', function($scope) {
   };
 
   $scope.isActiveTab = function(tabUrl) {
-    return tabUrl == $scope.currentTab
+    return tabUrl == $scope.currentTab;
   };
 }]);

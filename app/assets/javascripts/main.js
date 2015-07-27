@@ -1,1 +1,1 @@
-var app = angular.module('tickerTracker', ['ngResource', 'ui.select2']);
+var app = angular.module('tickerTracker', ['ngResource', 'ui.bootstrap', 'ui.select2']);

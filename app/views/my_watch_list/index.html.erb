@@ -13,19 +13,6 @@
     <div ng-show='error'>
     </div>
 
- <!--    <div class='span9' id='tabinfo'>
-      <div ng-controller='tabsCtrl'>
-        <ul id='alltabs'>
-          <li ng-repeat='tab in tabs' ng-class='{ active:isActiveTab(tab.url)}' ng-click='onClickTab(tab)' id='tabs'>
-            {{ tab.title }}
-          </li>
-        </ul>
-        <div id='mainView'>
-          <div ng-include='currentTab'></div>
-        </div>
-      </div>
-    </div> -->
-
     <div class='span9' id='tabinfo' ng-controller='tabsCtrl'>
       <ul class='nav nav-pills' id='alltabs'>
         <li ng-repeat='tab in tabs' ng-class='{ active:isActiveTab(tab.url)}' ng-click='onClickTab(tab)' id='tabs' role='presentation'>
@@ -51,31 +38,53 @@
           <h1 id='tab1'>My Stocks</h1>
           <ul>
             <input type='text' ng-model='search' placeholder='Filter Your Stocks'>
-              <table class='table table-striped'>
-                <tbody>
-                  <tr ng-repeat='stock in stocks | filter:search' id='stockList'>
-                    <td>
-                      <strong>{{ stock.symbol }}</strong>
-                      {{ stock.name }}</br>
-                      <strong>Bid:</strong> {{ stock.bid }} </br>
-                      <strong>Ask:</strong> {{ stock.ask }} <br/>
-                      <strong>Change:</strong> {{ stock.change }} <br/>
-                      <strong>Percent Change:</strong> {{ stock.change_in_percent }} <br/>
-                        <div id='links' class='btn-group btn-group' roll='group'>
-                          <div class='btn-group' role='group'>
-                            <button type='button' class='btn btn-default' ng-click='updateStock(stock.id, $index)'>Update</button>
-                          </div>
-                          <div class='btn-group' role='group'>
-                            <button type='button' class='btn btn-danger' ng-click='deleteStock(stock.id, $index)' id='delete'>Delete</button>
-                          </div>
-                          <div class='btn-group' role='group'>
-                            <button type='button' class='btn btn-info'>Graph</button>
-                          </div>
-                        </div>
-                    </td>
-                  </tr>
-                </tb>
-              </table>
+            <table class='table table-striped'>
+              <tbody>
+                <tr ng-repeat='stock in stocks | filter:search' id='stockList'>
+                  <td>
+                    <strong>{{ stock.symbol }}</strong>
+                    {{ stock.name }}</br>
+                    <strong>Bid:</strong> {{ stock.bid }} </br>
+                    <strong>Ask:</strong> {{ stock.ask }} <br/>
+                    <strong>Change:</strong> ${{ stock.change }} <br/>
+                    <strong>Percent Change:</strong> {{ stock.change_in_percent }}% <br/>
+
+                    <div id='links' class='btn-group btn-group' roll='group'>
+                      <div class='btn-group' role='group'>
+                        <button type='button' class='btn btn-default' ng-click='updateStock(stock.id, $index)'>Update</button>
+                      </div>
+
+                      <div class='btn-group' role='group'>
+                        <button type='button' class='btn btn-danger' ng-click='deleteStock(stock.id, $index)' id='delete'>Delete</button>
+                      </div>
+
+                      <div class='btn-group' role='group'>
+                        <button type='button' class='btn btn-info' ng-click='showStockChart = true' ng-model='showStockChart' id='graph'>Graph</button>
+                      </div>
+
+                      <div class='btn-group' role='group'>
+                        <button type='button' class='btn btn-default' ng-model='showStockChart' id='graph'>Graph2</button>
+                      </div>
+
+                      <div class='input-group' id='graph' style='max-width: 50px; height: 32.898px;'>
+                        <span class='input-group-addon'>
+                          Show Graph:
+                          <input type='checkbox' ng-model='showStockChart'>
+                        </span>
+                      </div>
+
+                    </div>
+
+                    <div my-chart stockid='stock.id' stocksymbol='stock.symbol' stockname='stock.name' ng-show='showStockChart' id='chart' style='padding-right: 30px; padding-left: 20px; padding-top: 15px;'>
+                      <div id='loading_chart'>
+                        Loading Chart...
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+              </tb>
+            </table>
           </ul>
         </div>
       </script>
