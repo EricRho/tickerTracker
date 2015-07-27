@@ -74,6 +74,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
         stock.name = data.query.results.quote.Name;
         stock.open = data.query.results.quote['Open'];
         stock.close = data.query.results.quote['Close'];
+        stock.previous_close = data.query.results.quote['PreviousClose'];
         stock.ask = data.query.results.quote.Ask;
         stock.bid = data.query.results.quote.Bid;
         stock.change = data.query.results.quote.Change;

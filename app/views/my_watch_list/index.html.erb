@@ -44,12 +44,12 @@
               <tbody>
                 <tr ng-repeat='stock in stocks | filter:search' id='stockList'>
                   <td>
-                    <strong>{{ stock.symbol }}</strong>
-                    {{ stock.name }}</br>
-                    <strong>Open:</strong> {{ stock.open }}
+                    <h3>{{ stock.symbol }}<small>({{ stock.name }})</small></h3>
+                    <strong>Open:</strong> {{ stock.open | currency }}</br>
+                    <strong>Previous Close:</strong> {{ stock.previous_close | currency}}</br>
                     <strong>Close:</strong> {{ stock.close }}</br>
-                    <strong>Bid:</strong> {{ stock.bid }} </br>
-                    <strong>Ask:</strong> {{ stock.ask }} <br/>
+                    <strong>Bid:</strong> {{ stock.bid | currency }} </br>
+                    <strong>Ask:</strong> {{ stock.ask | currency }} <br/>
                     <strong>Change:</strong> {{ stock.change | currency }} <br/>
                     <strong>Percent Change:</strong> {{ stock.change_in_percent | percentage: 2 }} <br/>
 
