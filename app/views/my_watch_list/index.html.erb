@@ -42,7 +42,7 @@
             </div>
             <table class='table table-striped'>
               <tbody>
-                <tr ng-repeat='stock in stocks | filter:search' id='stockList'>
+                <tr ng-repeat='stock in stocks | filter:search' id='stockList' ng-class="{danger: (stock.change < 0), success: (stock.change > 0)}">
                   <td>
                     <h3>{{ stock.symbol }}<small>({{ stock.name }})</small></h3>
                     <strong>Open:</strong> {{ stock.open | currency }}</br>

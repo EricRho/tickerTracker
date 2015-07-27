@@ -19,4 +19,12 @@ app.controller('tabsCtrl', ['$scope', function($scope) {
   $scope.isActiveTab = function(tabUrl) {
     return tabUrl == $scope.currentTab;
   };
+
+  $scope.changeColour = function() {
+    if ( stock.Change < 0 ) {
+      angular.element('#stockList').css('background-color, red');
+    } else {
+      angular.element('#stockList').css('background-color, #fff');
+    }
+  };
 }]);
