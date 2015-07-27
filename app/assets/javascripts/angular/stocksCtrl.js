@@ -72,6 +72,8 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
       .success(function(data, status, headers, config) {
         stock.symbol = symbol;
         stock.name = data.query.results.quote.Name;
+        stock.open = data.query.results.quote['Open'];
+        stock.close = data.query.results.quote['Close'];
         stock.ask = data.query.results.quote.Ask;
         stock.bid = data.query.results.quote.Bid;
         stock.change = data.query.results.quote.Change;
