@@ -1,4 +1,4 @@
-app.directive('myChart', function() {
+app.directive('stockChart', function() {
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {

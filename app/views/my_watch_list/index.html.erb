@@ -37,7 +37,9 @@
         <div id='viewTwo'>
           <h1 id='tab1'>My Stocks</h1>
           <ul>
-            <input type='text' ng-model='search' placeholder='Filter Your Stocks'>
+            <div class='input-group'>
+              <input type='text' class='form-control' ng-model='search' placeholder='Filter Your Stocks'>
+            </div>
             <table class='table table-striped'>
               <tbody>
                 <tr ng-repeat='stock in stocks | filter:search' id='stockList'>
@@ -59,23 +61,11 @@
                       </div>
 
                       <div class='btn-group' role='group'>
-                        <button type='button' class='btn btn-info' ng-click='toggleGraph()' ng-model='showStockChart' id='graph'>Graph</button>
+                        <button type='button' class='btn btn-info' ng-click='showStockChart = !showStockChart' id='graph'>Graph</button>
                       </div>
-
-                      <div class='btn-group' role='group'>
-                        <button type='button' class='btn btn-default' ng-model='showStockChart' id='graph'>Graph2</button>
-                      </div>
-
-                      <div class='input-group' id='graph' style='max-width: 50px; height: 32.898px;'>
-                        <span class='input-group-addon'>
-                          Show Graph:
-                          <input type='checkbox' ng-model='showStockChart'>
-                        </span>
-                      </div>
-
                     </div>
 
-                    <div my-chart stockid='stock.id' stocksymbol='stock.symbol' stockname='stock.name' ng-show='showStockChart' id='chart' style='padding-right: 30px; padding-left: 20px; padding-top: 15px;'>
+                    <div stock-chart stockid='stock.id' stocksymbol='stock.symbol' stockname='stock.name' ng-show='showStockChart' id='chart' style='padding-right: 30px; padding-left: 20px; padding-top: 15px;'>
                       <div id='loading_chart'>
                         Loading Chart...
                       </div>

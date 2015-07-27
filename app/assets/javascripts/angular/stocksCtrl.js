@@ -112,7 +112,4 @@ app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', funct
     return Stock.ohlc(stockid);
   };
 
-  $scope.toggleGraph = function() {
-    $scope.showStockChart = !$scope.showStockChart;
-  };
 }]);
