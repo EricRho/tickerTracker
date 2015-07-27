@@ -48,8 +48,8 @@
                     {{ stock.name }}</br>
                     <strong>Bid:</strong> {{ stock.bid }} </br>
                     <strong>Ask:</strong> {{ stock.ask }} <br/>
-                    <strong>Change:</strong> ${{ stock.change }} <br/>
-                    <strong>Percent Change:</strong> {{ stock.change_in_percent }}% <br/>
+                    <strong>Change:</strong> {{ stock.change | currency }} <br/>
+                    <strong>Percent Change:</strong> {{ stock.change_in_percent | percentage: 2 }} <br/>
 
                     <div id='links' class='btn-group btn-group' roll='group'>
                       <div class='btn-group' role='group'>
