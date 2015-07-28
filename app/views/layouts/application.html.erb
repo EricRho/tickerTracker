@@ -14,6 +14,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.0/select.min.js'></script>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.0/select.min.css'>
 </head>
+
 <body>
   <div class='all'>
     <nav class='navbar navbar-default' role='navigation'>
@@ -21,6 +22,19 @@
         <div class='navbar-header'>
           <a class='navbar-brand' href='/'>Ticker Tracker</a>
         </div>
+
+        <ul class='nav navbar-nav navbar-right'>
+          <% if user_signed_in? %>
+            <li>
+            <li><a href='/users/edit'>Edit Account</a></li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </li>
+          <% else %>
+            <li><a href='/users/sign_in'>Login</a></li>
+            <li><a href='/users/sign_up'>Sign Up</a></li>
+          <% end %>
+        </ul>
+
       </nav>
     </nav>
     <div ng-controller='clockCtrl' id='clock'>
