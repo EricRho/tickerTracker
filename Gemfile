@@ -39,6 +39,8 @@ gem 'yahoo-finance'
 # Fix AngularJS minified bugs when deployed to Heroku
 gem 'ngannotate-rails'
 
+gem 'puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
