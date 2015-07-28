@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :users,
+  :controllers => {
+    :omniauth_callbacks => 'users/omniauth_callbacks'
+  }
+
   scope :api do
     resources :stocks, defaults: {format: :json} do
       get :ohlc
