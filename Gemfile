@@ -36,6 +36,9 @@ gem 'httparty'
 # Yahoo Finance API
 gem 'yahoo-finance'
 
+# Fix AngularJS minified bugs when deployed to Heroku
+gem 'ngannotate-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
