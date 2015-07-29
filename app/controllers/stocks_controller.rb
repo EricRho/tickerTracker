@@ -44,7 +44,7 @@ class StocksController < ApplicationController
   private
 
   def stock_params
-    params.require(:stock).permit(:id, :symbol, :name, :open, :close, :previous_close, :ask, :bid, :change, :change_in_percent)
+    params.require(:stock).permit(:id, :symbol, :name, :open, :close, :previous_close, :ask, :bid, :change, :change_in_percent, :user_id)
   end
 
 end
