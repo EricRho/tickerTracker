@@ -25,6 +25,10 @@
           <a class='navbar-brand' href='/'>Ticker Tracker</a>
         </div>
 
+        <p ng-controller='clockCtrl' id='clock'>
+          {{ clock | date:'medium'}}
+        </p>
+
         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
             <li><a href='/users/edit'>Edit Account</a></li>

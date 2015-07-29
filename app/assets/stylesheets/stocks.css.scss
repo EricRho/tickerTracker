@@ -6,19 +6,13 @@ html, body {
   width: 100%;
   body {
     overflow-x: hidden;
+
+    div#everything.container {
+      margin-right: 20px;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
   }
-}
-
-#clock {
-  color: #585858;
-  position: relative;
-  left: 30px;
-  margin-bottom: 10px;
-}
-
-#everything {
-  margin-right: 20px;
-  margin-left: 20px;
 }
 
 #findSymbol {

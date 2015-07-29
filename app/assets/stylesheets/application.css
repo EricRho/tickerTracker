@@ -19,3 +19,11 @@
 nav.navbar.navbar-default {
   margin-bottom: 0px;
 }
+
+#clock {
+  color: #585858;
+  position: relative;
+  display: inline;
+  left: 30px;
+  margin-bottom: 10px;
+}
