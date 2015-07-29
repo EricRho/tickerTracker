@@ -15,3 +15,7 @@
  *= require angular-ui-select2
  *= require_self
  */
+
+nav.navbar.navbar-default {
+  margin-bottom: 0px;
+}

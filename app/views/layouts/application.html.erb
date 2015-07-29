@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One|Quicksand|Rokkitt|Exo|Dancing+Script|Raleway' rel='stylesheet' type='text/css'>
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -25,8 +27,8 @@
 
         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
-            <li>
             <li><a href='/users/edit'>Edit Account</a></li>
+            <li>
               <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
             </li>
           <% else %>
@@ -37,9 +39,6 @@
 
       </nav>
     </nav>
-    <div ng-controller='clockCtrl' id='clock'>
-      {{ clock | date:'medium'}}
-    </div>
   </div>
 <%= yield %>
 
