@@ -1,6 +1,7 @@
-app.controller('stocksCtrl', ['$scope', 'Stock', '$filter', '$http', '$q', function($scope, Stock, $filter, $http, $q) {
+app.controller('stocksCtrl', ['$scope', 'Session', 'sessionService', 'Stock', '$filter', '$http', '$q', function($scope, Session, sessionService, Stock, $filter, $http, $q) {
   $scope.stocks = Stock.all();
   $scope.error = false;
+  $scope.user = Session.user;
 
   // Ajax call to populate Search bar.
   // initSelection is to prevent error. No clue what it actually does

@@ -1,5 +1,3 @@
-
-
 <div class='container' id='everything' ng-controller='stocksCtrl'>
   <div class='row'>
     <div ng-controller='clockCtrl' id='clock'>
@@ -31,6 +29,8 @@
       <script type='text/ng-template' id='one.tpl.html'>
         <div id='viewOne'>
           <h1>My Profile</h1>
+          <h2>Hi, {{ user.name }} </h2>
+          <h2><%= current_user.name %></h2>
           <p>User profile stuff goes here</p>
         </div>
       </script>
