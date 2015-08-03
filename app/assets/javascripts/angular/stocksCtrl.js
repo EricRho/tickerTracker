@@ -1,4 +1,4 @@
-app.controller('stocksCtrl', ['$scope', 'Session', 'sessionService', 'Stock', '$filter', '$http', '$q', function($scope, Session, sessionService, Stock, $filter, $http, $q) {
+app.controller('stocksCtrl', ['$scope', 'sessionService', 'Stock', '$filter', '$http', '$q', function($scope, sessionService, Stock, $filter, $http, $q) {
   $scope.stocks = Stock.all();
   $scope.error = false;
 

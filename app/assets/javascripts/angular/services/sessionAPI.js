@@ -5,7 +5,7 @@ app.factory('sessionService', function($http, $q) {
         return $q.when(service.currentUser);
       } else {
         return $http.get('/api/current_user').then(function(resp) {
-          return service.currentUser == resp.data;
+          return service.currentUser = resp.data;
         });
       }
     },
