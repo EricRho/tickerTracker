@@ -41,7 +41,13 @@ gem 'ngannotate-rails'
 
 gem 'puma'
 
+# Devise for user authentication
 gem 'devise'
+
+# Oauth and omniauth
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'uuidtools'
 
 gem 'rails_12factor', group: :production
 
