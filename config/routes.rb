@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
   authenticated :user do
     devise_scope :user do
-      root :to => 'my_watch_list#index', :as => 'authenticated'
+      # root :to => 'my_watch_list#index', :as => 'authenticated'
+      get '/' => 'my_watch_list#index'
     end
   end
 end
