@@ -6,24 +6,60 @@ html, body {
   width: 100%;
   body {
     overflow-x: hidden;
+
+    #everything {
+      margin-right: 20px;
+      margin-left: 100px;
+
+      div#stockStuff.row {
+        margin-left: 10px;
+      }
+
+      #clock {
+        color: #585858;
+        position: relative;
+        left: 30px;
+        marign-bottom: 10px;
+      }
+
+      #findSymbol {
+        padding-bottom: 20px;
+      }
+    }
+
+    div.ng-scope {
+      margin-right: 0px;
+
+      h1 {
+        position: relative;
+        text-align: center;
+      }
+    }
   }
 }
 
-#clock {
-  color: #585858;
-  position: relative;
-  left: 30px;
-  margin-bottom: 10px;
-}
+// #clock {
+//   color: #585858;
+//   position: relative;
+//   left: 30px;
+//   margin-bottom: 10px;
+// }
 
-#everything {
-  margin-right: 20px;
-  margin-left: 20px;
-}
+// #everything {
+//   margin-right: 20px;
+//   margin-left: 100px;
 
-#findSymbol {
-  padding-bottom: 20px;
-}
+//   #clock {
+//     color: #585858;
+//     position: relative;
+//     left: 30px;
+//     margin-bottom: 10px;
+//   }
+
+//   #findSymbol {
+//     padding-bottom: 20px;
+//   }
+// }
 
 .nav-pills {
 
@@ -43,19 +79,19 @@ html, body {
 //   border-bottom: none;
 // }
 
-div.ng-scope {
-  h1 {
-    position: relative;
-    text-align: center;
-  }
-}
+// div.ng-scope {
 
-#mainView {
-  ul {
-    list-style-type: none;
-  }
-}
+//   margin-right: 0px;
+//   h1 {
+//     position: relative;
+//     text-align: center;
+//   }
+// }
 
-div.row {
-  margin-left: 10px;
-}
+// #mainView {
+//   ul {
+//     list-style-type: none;
+//   }
+// }
+
+
