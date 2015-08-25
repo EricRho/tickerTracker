@@ -45,8 +45,10 @@ gem 'rails_12factor', group: :production
 
 gem 'devise'
 
+# Omniauth
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'uuidtools'
 
 # Use ActiveModel has_secure_password

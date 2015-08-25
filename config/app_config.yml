@@ -3,6 +3,10 @@ defaults: &defaults
     clientId: 'fFduOTzC90cxaKcOpOkMRASw6'
     clientSecret: 'HrDPAI3M1K0Kjyt11aWdkPRf9JJ9RhcvGdnbNYitPOoBGZflDE'
 
+  facebook:
+    clientId: '391502424381018'
+    clientSecret: '5d2392012a5d8a72f3975ace50ed7359'
+
 development:
   <<: *defaults
 
