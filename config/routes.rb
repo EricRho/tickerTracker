@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   authenticated :user do
     devise_scope :user do
       # root :to => 'my_watch_list#index', :as => 'authenticated'
+      get '/api/current_user' => 'users/sessions#show_current_user'
+      post '/api/check/is_user' => 'users/users#is_user', as: 'is_user'
       get '/' => 'my_watch_list#index'
     end
   end

@@ -5,7 +5,7 @@ class StocksController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Stock.all
+    respond_with current_user.stocks.all
   end
 
   def destroy
@@ -13,7 +13,7 @@ class StocksController < ApplicationController
   end
 
   def create
-    respond_with Stock.create(stock_params)
+    respond_with current_user.stocks.create(stock_params)
   end
 
   def update
@@ -44,7 +44,7 @@ class StocksController < ApplicationController
   private
 
   def stock_params
-    params.require(:stock).permit(:id, :symbol, :name, :open, :close, :previous_close, :ask, :bid, :change, :change_in_percent)
+    params.require(:stock).permit(:id, :symbol, :name, :open, :close, :previous_close, :ask, :bid, :change, :change_in_percent, :user_id)
   end
 
 end

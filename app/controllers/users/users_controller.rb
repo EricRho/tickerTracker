@@ -12,8 +12,8 @@ class Users::UsersController < Devise::SessionsController
   private
 
   def reject_if_not_authorized_request!
-    warden_authenticate!(
+    warden.authenticate!(
       scope: resource_name,
-      recall: "#{controller_path}#failure")
+    recall: "#{controller_path}#failure")
   end
 end
