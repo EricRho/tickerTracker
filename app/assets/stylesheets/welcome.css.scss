@@ -27,6 +27,24 @@ html, body {
       padding-top: 120px;
       font-family: 'Poiret One', cursive;
     }
+
+    ul {
+      display: inline;
+
+      img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+
+      #twitter-login-button {
+        max-width: 350px;
+      }
+
+      #facebook-login-button {
+        max-width: 640px;
+      }
+    }
   }
 }
 

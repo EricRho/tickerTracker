@@ -4,5 +4,11 @@
   <div id='background'>
     <h1 id='welcome-title' align='center'>Ticker Tracker</h1>
     <h3 style='color:white; width; 200px;'>SORRY! Portions of this site are under construction but please feel free to sign in and start tracking your stocks</h3>
+
+    </br>
+    <ul>
+      <li><%= link_to(image_tag('twitter.png', id: 'twitter-login-button'), user_omniauth_authorize_url(:twitter)) %></li>
+      <li><%= link_to(image_tag('facebook.png', id: 'facebook-login-button'), user_omniauth_authorize_url(:facebook)) %></li>
+    </ul>
   </div>
 </div>
