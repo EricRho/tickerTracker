@@ -18,6 +18,10 @@ html, body {
       height: 100%;
       overflow: hidden;
       position: relative;
+
+      h3 {
+        text-align: center;
+      }
     }
 
     h1#welcome-title {
