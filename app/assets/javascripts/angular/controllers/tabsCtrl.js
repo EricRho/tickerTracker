@@ -10,7 +10,7 @@ app.controller('tabsCtrl', ['$scope', function($scope) {
     url: 'three.tpl.html'
   }];
 
-  $scope.currentTab = 'one.tpl.html';
+  $scope.currentTab = 'two.tpl.html';
 
   $scope.onClickTab = function(tab) {
     $scope.currentTab = tab.url;
