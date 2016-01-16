@@ -14,6 +14,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
+//= require angular-material.min
+//= require angular-animate
+//= require angular-aria
 //= require select2
 //= require angular-ui-select2
 //= require angular-resource

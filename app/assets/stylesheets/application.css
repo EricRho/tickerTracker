@@ -13,11 +13,13 @@
  *= require_tree .
  *= require select2
  *= require angular-ui-select2
+ *= require angular-material
  *= require_self
  */
 
-nav.navbar.navbar-default {
+/*nav.navbar.navbar-default {
   margin-bottom: 0px;
   background-color: #ecf0f1;
 
 }
+*/
