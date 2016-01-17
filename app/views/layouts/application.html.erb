@@ -23,14 +23,14 @@
 </head>
 
 <body>
-  <div class='all'>
+  <div class='all' ng-controller='someCtrl'>
     <nav class='navbar navbar-default' role='navigation'>
       <nav class='container-fluid'>
         <div class='navbar-header'>
           <a class='navbar-brand' href='/'>Ticker Tracker</a>
         </div>
 
-  <!--       <ul class='nav navbar-nav navbar-right'>
+ <!--         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
             <li><a href='/users/edit'>Edit Account</a></li>
             <li>
@@ -40,13 +40,26 @@
             <li><a href='/users/sign_in'>Login</a></li>
             <li><a href='/users/sign_up'>Sign Up</a></li>
           <% end %>
-        </ul>
- -->
-        <ul>
+        </ul> -->
+
+        <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
-            <li><md-button class='md-raised' ng-click="go('http://www.starwars.com')">Hello</md-button></li>
+            <li>
+              <!-- <md-button class='md-raised'><a href='/users/edit'>Edit Account</a></md-button> -->
+              <md-button class='md-raised' href='/users/edit'>Edit Account</md-button>
+            </li>
+            <li>
+              <!-- <md-button class='md-raised'><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></md-button> -->
+              <md-button class='md-raised' href='/users/sign_out'>Logout</md-button>
+            </li>
+
           <% else %>
-            <li><md-button class='md-raised'>Bye</md-button></li>
+            <li>
+              <md-button class='md-raised' href='/users/sign_in'>Login</md-button>
+            </li>
+            <li>
+              <md-button class='md-raised' href='/users/sign_up'>Sign Up</md-button>
+            </li>
           <% end %>
         </ul>
 

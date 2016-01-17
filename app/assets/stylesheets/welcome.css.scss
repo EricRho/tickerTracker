@@ -2,54 +2,139 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body {
-  body {
+$test-btn-1: #5C6BC0;
+$test-btn-1-hover: #9FA8DA;
 
-  }
+$test-btn-2: #00796B;
+$test-btn-2-hover: #009688;
 
-  div#home {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    margin: 0px;
+nav {
 
-    div#background {
-      background-image: url('wall-street.jpg');
-      height: 100%;
-      overflow: hidden;
-      position: relative;
+  .container-fluid {
+    color: white;
 
-      h3 {
-        text-align: center;
-      }
-    }
-
-    h1#welcome-title {
+    .md-raised.md-button.md-default-theme {
       color: white;
-      font-size: 70px;
-      margin-top: 0px;
-      padding-top: 120px;
-      font-family: 'Poiret One', cursive;
+      background-color: $test-btn-2;
     }
 
-    ul {
-      display: inline;
-
-      img {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-      }
-
-      #twitter-login-button {
-        max-width: 350px;
-      }
-
-      #facebook-login-button {
-        max-width: 640px;
-      }
+    .md-raised.md-button.md-default-theme:not([disabled]):hover {
+      background-color: $test-btn-2-hover;
     }
   }
 }
+
+body {
+
+  .container {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    overflow: hidden;
+
+    #background {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, .40) 90%, rgba(0, 0, 0, .40) 90%, rgba(0, 0, 0, 0.40) 90%), url('wall-street.jpg') center no-repeat;
+      background-size: 100%;
+
+      #title {
+        color: white;
+        font-family: 'Poiret One', cursive;
+        text-align: center;
+        // background: rgba(0, 0, 0, 0.22);
+
+        h1 {
+          // font-family: 'Poiret One', cursive;
+        }
+
+        ul {
+          list-style: none;
+          display: -webkit-inline-box;
+          margin: auto;
+
+          li {
+
+            #twitter-login-button {
+              max-width: 250px;
+            }
+
+            #facebook-login-button {
+              max-width: 450px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+// html, body {
+//   body {
+//     .container {
+//       background-color: #efefef;
+//       height: 100%;
+//       width: 100%;
+//       padding: 0px;
+//       margin: 0px;
+//       overflow: hidden;
+
+//       #background {
+//         background-image: url('wall-street.jpg');
+//         height: 100%;
+//       }
+//     }
+//   }
+// }
+
+
+// html, body {
+//   body {
+
+//   }
+
+//   div#home {
+//     height: 100%;
+//     width: 100%;
+//     position: absolute;
+//     margin: 0px;
+
+//     div#background {
+//       background-image: url('wall-street.jpg');
+//       height: 100%;
+//       overflow: hidden;
+//       position: relative;
+
+//       h3 {
+//         text-align: center;
+//       }
+//     }
+
+//     h1#welcome-title {
+//       color: white;
+//       font-size: 70px;
+//       margin-top: 0px;
+//       padding-top: 120px;
+//       font-family: 'Poiret One', cursive;
+//     }
+
+//     ul {
+//       display: inline;
+
+//       img {
+//         margin-left: auto;
+//         margin-right: auto;
+//         display: block;
+//       }
+
+//       #twitter-login-button {
+//         max-width: 350px;
+//       }
+
+//       #facebook-login-button {
+//         max-width: 640px;
+//       }
+//     }
+//   }
+// }
 
 

@@ -30,6 +30,8 @@ gem 'angularjs-rails'
 # For UI changes
 gem 'angular-ui-select2-rails'
 
+gem 'rails-angular-material'
+
 # For use in scraping data for derivative db
 gem 'httparty'
 

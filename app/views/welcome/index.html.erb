@@ -1,6 +1,6 @@
+<!--
 
-
-<div class='row' id='home'>
+<div class='container' id='home'>
   <div id='background'>
     <h1 id='welcome-title' align='center'>Ticker Tracker</h1>
     <h3 style='color:white; width; 200px;'>SORRY! Portions of this site are under construction but please feel free to sign in and start tracking your stocks</h3>
@@ -10,5 +10,29 @@
       <li><%= link_to(image_tag('twitter.png', id: 'twitter-login-button'), user_omniauth_authorize_url(:twitter)) %></li>
       <li><%= link_to(image_tag('facebook.png', id: 'facebook-login-button'), user_omniauth_authorize_url(:facebook)) %></li>
     </ul>
+  </div>
+</div>
+ -->
+
+<div class='container'>
+  <div id='home'>
+    <md-grid-list md-cols='6' md-row-height='1:1'>
+
+      <md-grid-tile id='background' md-rowspan="2" md-colspan='6'>
+        <div id='title'>
+          <h1>Welcome to TickerTracker</h1>
+          <br>
+          <p>Sorry, parts of this site are under construction
+            <br>
+            But please feel free to sign in and follow some stocks.
+          </p>
+          <ul>
+            <li><%= link_to(image_tag('twitter.png', id: 'twitter-login-button'), user_omniauth_authorize_url(:twitter)) %></li>
+            <li><%= link_to(image_tag('facebook.png', id: 'facebook-login-button'), user_omniauth_authorize_url(:facebook)) %></li>
+          </ul>
+        </div>
+      </md-grid-tile>
+
+    </md-grid-list>
   </div>
 </div>
