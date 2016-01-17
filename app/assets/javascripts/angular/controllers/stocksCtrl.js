@@ -1,4 +1,4 @@
-app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$http', '$q', function($scope, Stock, sessionService, $filter, $http, $q) {
+app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$http', '$q', '$mdDialog', function($scope, Stock, sessionService, $filter, $http, $q, $mdDialog) {
   $scope.stocks = Stock.all();
   $scope.error = false;
 
@@ -15,7 +15,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
         };
       },
       results: function(data, page) {
-        console.log(data);
+        // console.log(data);
         return {
           results: data
         };
@@ -51,7 +51,8 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
   // Once change is noticed, creates stock. Issue here. Creates extra emtpy Stock.
   $scope.$watch('newCompany', function() {
     if ($scope.newCompany != '' && $scope.newCompany != null) {
-      $scope.createStock();
+      // $scope.createStock();
+      $scope.showStock();
     }
   });
 
@@ -117,6 +118,21 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
   // Retrieves Open, High, Low, Close graph from backend
   $scope.requestOHLC = function(stockid) {
     return Stock.ohlc(stockid);
+  };
+
+  $scope.showStock = function(id, index) {
+    var confirm = $mdDialog.confirm()
+      .title($scope.getStockData())
+      .textContent('All of the banks have agreed to forgive you your debts.')
+      .ariaLabel('Lucky day')
+      .targetEvent(id)
+      .ok('Please do it!')
+      .cancel('Sounds like a scam');
+    $mdDialog.show(confirm).then(function() {
+      $scope.status = 'You decided to get rid of your debt.';
+    }, function() {
+      $scope.status = 'You decided to keep your debt.';
+    });
   };
 
 }]);

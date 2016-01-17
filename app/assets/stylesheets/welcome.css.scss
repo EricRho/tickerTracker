@@ -13,13 +13,13 @@ nav {
   .container-fluid {
     color: white;
 
-    .md-raised.md-button.md-default-theme {
+    .md-raised.md-button.md-ink-ripple {
       color: white;
-      background-color: $test-btn-2;
+      background-color: $test-btn-2 !important;
     }
 
-    .md-raised.md-button.md-default-theme:not([disabled]):hover {
-      background-color: $test-btn-2-hover;
+    .md-raised.md-button.md-ink-ripple:not([disabled]):hover {
+      background-color: $test-btn-2-hover !important;
     }
   }
 }

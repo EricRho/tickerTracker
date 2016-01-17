@@ -1,3 +1,91 @@
+<div class='container' id='everything' ng-controller='stocksCtrl'>
+  <div class='row' id='stockStuff'>
+    <div ng-controller='clockCtrl' id='clock'>
+      {{ clock | date:'medium'}}
+    </div>
+
+    <div id='searchSymbol'>
+      <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company' ng-require='true' style='width: 200px;'>
+    </div>
+
+    <div class='allStocks' ng-cloak>
+      <md-content>
+        <md-tabs class='md-dynamic-height md-border-bottom'>
+
+          <!-- Profile Tab -->
+          <md-tab label='Profile'>
+            <md-content id='profileTab' class='md-padding'>
+              <h1 class='md-display-2'>My Profile</h1>
+              <md-button class='md-raised'>Test Button</md-button>
+              <md-button class='md-raised' ng-click='showStock()'>Alert</md-button>
+              <h2>Welcome, <strong><%= current_user.name %></strong>!</h2>
+              <p>User profile stuff goes here</p>
+            </md-content>
+          </md-tab>
+
+          <!-- Stocks Tab -->
+          <md-tab label='My Stocks'>
+            <md-content id='stockTab' class='md-padding'>
+              <h1 class='md-display-2'>Stocks</h1>
+                <table class='table table-striped'>
+                  <tbody>
+                    <tr ng-repeat='stock in stocks | filter:search' id='stockList' ng-class='{danger: (stock.change < 0), success: (stock.change > 0)}'>
+                      <td>
+                        <h3>{{ stock.symbol }}<small>({{ stock.name }})</small></h3>
+                        <strong>Open:</strong> {{ stock.open | currency }}
+                        <br>
+                        <strong>Previous Close:</strong>{{ stock.previous_close | currency }}
+                        <br>
+                        <strong>Close:</strong>{{ stock.close }}
+                        <br>
+                        <strong>Bid:</strong>{{ stock.bid | currency }}
+                        <br>
+                        <strong>Ask:</strong>{{ stock.ask | currency }}
+                        <br>
+                        <strong>Change:</strong>{{ stock.change | currency }}
+                        <br>
+                        <strong>Percent Change:</strong>{{ stock.change_in_percent | percentage: 2 }}
+                        <br>
+
+                        <div id='stockBtns' class='btn-group' roll='group'>
+                          <div class='btn-group' role='group'>
+                            <md-button class='md-raised' ng-click='updateStock(stock.id, $index)'>Update</md-button>
+                          </div>
+                          <div class='btn-group' role='group'>
+                            <md-button class='md-raised md-warn' ng-click='deleteStock(stock.id, $index)'>Delete</md-button>
+                          </div>
+                          <div class='btn-group' role='group'>
+                            <md-button class='md-raised md-primary' ng-click='showStockChart = !showStockChart'>Graph</md-button>
+                          </div>
+                        </div>
+
+                        <div stock-chart id='stockChart' stockid='stock.id' stocksymbol='stock.symbol' stockname='stock.name' ng-show='showStockChart' id='stockChart'>
+                          <div id='loadingChart'>
+                            Loading Chart...
+                          </div>
+                        </div>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </md-content>
+          </md-tab>
+
+          <!-- Feed Tab -->
+          <md-tab label='News Feed'>
+            <md-content class='md-padding'>
+              <h1 class='md-display-2'>Tab Three</h1>
+              <p> News feed goes here </p>
+            </md-content>
+          </md-tab>
+
+        </md-tabs>
+      </md-content>
+    </div>
+  </div>
+</div>
+
 <!-- <div class='container' id='everything' ng-controller='stocksCtrl'>
   <div class='row' id='stockStuff'>
     <div ng-controller='clockCtrl' id='clock'>
@@ -96,88 +184,3 @@
   </div>
 </div> -->
 
-
-
-
-<div class='container' id='everything' ng-controller='stocksCtrl'>
-  <div class='row' id='stockStuff'>
-    <div ng-controller='clockCtrl' id='clock'>
-      {{ clock | date:'medium'}}
-    </div>
-
-    <div id='searchSymbol'>
-      <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company' ng-require='true' style='width: 200px;'>
-    </div>
-
-    <div class='allStocks' ng-cloak>
-      <md-content>
-        <md-tabs class='md-dynamic-height md-border-bottom'>
-
-          <md-tab label='Profile'>
-            <md-content id='profileTab' class='md-padding'>
-              <h1 class='md-display-2'>My Profile</h1>
-              <h2>Welcome, <strong><%= current_user.name %></strong>!</h2>
-              <p>User profile stuff goes here</p>
-            </md-content>
-          </md-tab>
-
-          <md-tab label='My Stocks'>
-            <md-content id='stockTab' class='md-padding'>
-              <h1 class='md-display-2'>Stocks</h1>
-                <table class='table table-striped'>
-                  <tbody>
-                    <tr ng-repeat='stock in stocks | filter:search' id='stockList' ng-class='{danger: (stock.change < 0), success: (stock.change > 0)}'>
-                      <td>
-                        <h3>{{ stock.symbol }}<small>({{ stock.name }})</small></h3>
-                        <strong>Open:</strong> {{ stock.open | currency }}
-                        <br>
-                        <strong>Previous Close:</strong>{{ stock.previous_close | currency }}
-                        <br>
-                        <strong>Close:</strong>{{ stock.close }}
-                        <br>
-                        <strong>Bid:</strong>{{ stock.bid | currency }}
-                        <br>
-                        <strong>Ask:</strong>{{ stock.ask | currency }}
-                        <br>
-                        <strong>Change:</strong>{{ stock.change | currency }}
-                        <br>
-                        <strong>Percent Change:</strong>{{ stock.change_in_percent | percentage: 2 }}
-                        <br>
-
-                        <div id='stockBtns' class='btn-group' roll='group'>
-                          <div class='btn-group' role='group'>
-                            <md-button class='md-raised' ng-click='updateStock(stock.id, $index)'>Update</md-button>
-                          </div>
-                          <div class='btn-group' role='group'>
-                            <md-button class='md-raised md-warn' ng-click='deleteStock(stock.id, $index)'>Delete</md-button>
-                          </div>
-                          <div class='btn-group' role='group'>
-                            <md-button class='md-raised md-primary' ng-click='showStockChart = !showStockChart'>Graph</md-button>
-                          </div>
-                        </div>
-
-                        <div stock-chart id='stockChart' stockid='stock.id' stocksymbol='stock.symbol' stockname='stock.name' ng-show='showStockChart' id='stockChart'>
-                          <div id='loadingChart'>
-                            Loading Chart...
-                          </div>
-                        </div>
-
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-            </md-content>
-          </md-tab>
-
-          <md-tab label='News Feed'>
-            <md-content class='md-padding'>
-              <h1 class='md-display-2'>Tab Three</h1>
-              <p> News feed goes here </p>
-            </md-content>
-          </md-tab>
-
-        </md-tabs>
-      </md-content>
-    </div>
-  </div>
-</div>
