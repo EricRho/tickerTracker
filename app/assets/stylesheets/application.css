@@ -22,3 +22,8 @@ nav.navbar.navbar-default {
 
 }
 
+.container {
+  width: 100%;
+  overflow-x: hidden;
+}
+

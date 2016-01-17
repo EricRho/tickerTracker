@@ -2,96 +2,81 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// html, body {
+//   width: 100%;
+//   body {
+//     overflow-x: hidden;
+
+//     #everything {
+//       margin-right: 20px;
+//       margin-left: 100px;
+
+//       div#stockStuff.row {
+//         margin-left: 10px;
+//       }
+
+//       #clock {
+//         color: #585858;
+//         position: relative;
+//         left: 30px;
+//         marign-bottom: 10px;
+//       }
+
+//       #findSymbol {
+//         padding-bottom: 20px;
+//       }
+//     }
+
+//     div.ng-scope {
+//       margin-right: 0px;
+
+//       h1 {
+//         position: relative;
+//         text-align: center;
+//       }
+//     }
+//   }
+// }
+
 html, body {
-  width: 100%;
+
   body {
-    overflow-x: hidden;
 
     #everything {
-      margin-right: 20px;
-      margin-left: 100px;
 
-      div#stockStuff.row {
-        margin-left: 10px;
-      }
+      #stockStuff {
+        padding-left: 50px;
 
-      #clock {
-        color: #585858;
-        position: relative;
-        left: 30px;
-        marign-bottom: 10px;
-      }
+        #searchSymbol {
 
-      #findSymbol {
-        padding-bottom: 20px;
-      }
-    }
+          div#select2-drop-mask.select2-drop-mask {
+            width: 200px;
+          }
+        }
 
-    div.ng-scope {
-      margin-right: 0px;
+        .allStocks {
 
-      h1 {
-        position: relative;
-        text-align: center;
+          md-content {
+
+            md-tabs {
+
+              #profileTab {
+              }
+
+              #stockTab {
+
+                #stockChart {
+                  padding-right: 30px;
+                  padding-left: 20px;
+                  padding-top: 15px;
+                }
+
+              }
+            }
+          }
+        }
       }
     }
   }
 }
-
-// #clock {
-//   color: #585858;
-//   position: relative;
-//   left: 30px;
-//   margin-bottom: 10px;
-// }
-
-// #everything {
-//   margin-right: 20px;
-//   margin-left: 100px;
-
-//   #clock {
-//     color: #585858;
-//     position: relative;
-//     left: 30px;
-//     margin-bottom: 10px;
-//   }
-
-//   #findSymbol {
-//     padding-bottom: 20px;
-//   }
-// }
-
-.nav-pills {
-
-}
-
-// #tabs {
-//   display: inline;
-//   padding: 12px;
-//   border: 1px solid black;
-//   border-top-left-radius: 12px;
-//   border-top-right-radius: 12px;
-// }
-
-// .active {
-//   background-color: #7681d6;
-//   color: #000;
-//   border-bottom: none;
-// }
-
-// div.ng-scope {
-
-//   margin-right: 0px;
-//   h1 {
-//     position: relative;
-//     text-align: center;
-//   }
-// }
-
-// #mainView {
-//   ul {
-//     list-style-type: none;
-//   }
-// }
-
 
