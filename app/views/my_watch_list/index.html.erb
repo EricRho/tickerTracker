@@ -1,15 +1,23 @@
-<div class='container' id='everything' ng-controller='stocksCtrl'>
-  <div class='row' id='stockStuff'>
+<div  id='everything' ng-controller='stocksCtrl'>
+
+  <div class='col-lg-2' id='searchSymbol'>
+    <form>
+      <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search NASDAQ' ng-require='true' style='width: 200px;'>
+      <md-button class='md-raised secondary-btn' ng-click='showStock()'>Submit</md-button>
+    </form>
+  </div>
+
+  <div class='col-lg-8' id='stockStuff'>
     <div ng-controller='clockCtrl' id='clock'>
       {{ clock | date:'medium'}}
     </div>
 
-    <div id='searchSymbol'>
+  <!--   <div id='searchSymbol'>
       <form>
         <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search NASDAQ' ng-require='true' style='width: 200px;'>
-        <md-button class='md-raised' ng-click='showStock()'>Submit</md-button>
+        <md-button class='md-raised secondary-btn' ng-click='showStock()'>Submit</md-button>
       </form>
-    </div>
+    </div> -->
 
     <div class='allStocks' ng-cloak>
       <md-content>
@@ -19,8 +27,8 @@
           <md-tab label='Profile'>
             <md-content id='profileTab' class='md-padding'>
               <h1 class='md-display-2'>My Profile</h1>
-              <md-button class='md-raised'>Test Button</md-button>
-              <md-button class='md-raised' ng-click='showStock()'>Alert</md-button>
+              <md-button class='md-raised flat-btn'>Test Button</md-button>
+              <md-button class='md-raised secondary-btn' ng-click='showStock()'>Alert</md-button>
               <h2>Welcome, <strong><%= current_user.name %></strong>!</h2>
               <p>User profile stuff goes here</p>
             </md-content>
@@ -87,5 +95,7 @@
         </md-tabs>
       </md-content>
     </div>
+  </div>
+  <div class='col-lg-2'>
   </div>
 </div>

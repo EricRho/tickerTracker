@@ -2,16 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$primary-btn-color: #00796B;
+$secondary-btn-color: #ff5252;
+
 html, body {
 
   body {
 
     #everything {
+      margin-top: 25px;
+
+      .secondary-btn {
+        color: $primary-btn-color;
+      }
+
+      .flat-btn {
+        color: $secondary-btn-color;
+      }
 
       #stockStuff {
         padding-left: 50px;
+        max-widht: 1170px;
+
+        // .secondary-btn {
+        //   color: $primary-btn-color;
+        // }
+
+        // .flat-btn {
+        //   color: $secondary-btn-color;
+        // }
 
         #searchSymbol {
+          // .secondary-btn {
+          //   color: $primary-btn-color;
+          // }
 
           div#select2-drop-mask.select2-drop-mask {
             width: 200px;

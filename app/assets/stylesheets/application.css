@@ -19,7 +19,15 @@
 
 nav.navbar.navbar-default {
   margin-bottom: 0px;
+  background-color: #424242;
+  border: none;
+  color: white;
+  border-radius: 0px;
+}
 
+a.navbar-brand  {
+  font-family: 'Poiret One', cursive;
+  color: #ff5252 !important;
 }
 
 .container {

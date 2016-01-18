@@ -48,18 +48,20 @@
         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
             <li>
-              <md-button class='md-raised' href='/users/edit'>Edit Account</md-button>
+              <md-button class='md-raised'><%= link_to('Edit Account', edit_user_registration_path) %></md-button>
             </li>
             <li>
-              <md-button class='md-raised md-ink-ripple' style='color: white; width: 100%'><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></md-button>
+              <md-button class='md-raised md-ink-ripple'><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></md-button>
             </li>
 
           <% else %>
             <li>
-              <md-button class='md-raised md-ink-ripple' href='/users/sign_in'>Login</md-button>
+              <!-- <md-button class='md-raised md-ink-ripple' href='/users/sign_in'>Login</md-button> -->
+              <md-button class='md-raised md-ink-ripple'><%= link_to('Login', new_user_session_path) %></md-button>
             </li>
             <li>
-              <md-button class='md-raised' href='/users/sign_up'>Sign Up</md-button>
+              <!-- <md-button class='md-raised' href='/users/sign_up'>Sign Up</md-button> -->
+              <md-button class='md-raised'><%= link_to('Sign Up', new_user_registration_path) %></md-button>
             </li>
           <% end %>
         </ul>

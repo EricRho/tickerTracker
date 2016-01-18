@@ -14,7 +14,7 @@ nav {
 
     .md-raised.md-button.md-ink-ripple {
       color: white;
-      background-color: $test-btn-2 !important;
+      background-color: $test-btn-2;
 
       a:visited {
         color: white;
@@ -26,7 +26,7 @@ nav {
     }
 
     .md-raised.md-button.md-ink-ripple:not([disabled]):hover {
-      background-color: $test-btn-2-hover !important;
+      background-color: $test-btn-2-hover;
     }
 
     .md-raised.md-button.md-ink-ripple:visited {
