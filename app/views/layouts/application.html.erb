@@ -48,11 +48,10 @@
         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
             <li>
-              <!-- <md-button class='md-raised'><a href='/users/edit'>Edit Account</a></md-button> -->
               <md-button class='md-raised' href='/users/edit'>Edit Account</md-button>
             </li>
             <li>
-              <md-button class='md-raised md-ink-ripple'><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></md-button>
+              <md-button class='md-raised md-ink-ripple' style='color: white; width: 100%'><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></md-button>
             </li>
 
           <% else %>
