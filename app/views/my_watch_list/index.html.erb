@@ -5,7 +5,10 @@
     </div>
 
     <div id='searchSymbol'>
-      <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company' ng-require='true' style='width: 200px;'>
+      <form>
+        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search NASDAQ' ng-require='true' style='width: 200px;'>
+        <md-button class='md-raised' ng-click='showStock()'>Submit</md-button>
+      </form>
     </div>
 
     <div class='allStocks' ng-cloak>
@@ -52,7 +55,8 @@
                             <md-button class='md-raised' ng-click='updateStock(stock.id, $index)'>Update</md-button>
                           </div>
                           <div class='btn-group' role='group'>
-                            <md-button class='md-raised md-warn' ng-click='deleteStock(stock.id, $index)'>Delete</md-button>
+                            <!-- <md-button class='md-raised md-warn' ng-click='deleteStock(stock.id, $index)'>Delete</md-button> -->
+                            <md-button class='md-raised md-warn' ng-click='deleteAlert(stock.id, $index)'>Delete</md-button>
                           </div>
                           <div class='btn-group' role='group'>
                             <md-button class='md-raised md-primary' ng-click='showStockChart = !showStockChart'>Graph</md-button>

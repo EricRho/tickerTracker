@@ -23,10 +23,6 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
     }
   };
 
-  $scope.something = function() {
-    alert('hello');
-  };
-
   $scope.deleteStock = function(id, index) {
     $scope.stocks.splice(index, 1);
     return Stock.delete(id);
@@ -49,12 +45,11 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
 
   // Creates watcher for when user types in newCompany search.
   // Once change is noticed, creates stock. Issue here. Creates extra emtpy Stock.
-  $scope.$watch('newCompany', function() {
-    if ($scope.newCompany != '' && $scope.newCompany != null) {
-      // $scope.createStock();
-      $scope.showStock();
-    }
-  });
+  // $scope.$watch('newCompany', function() {
+  //   if ($scope.newCompany != '' && $scope.newCompany != null) {
+  //     $scope.showStock();
+  //   }
+  // });
 
   // Retrieves stock information from yahoofinance.
   // using $http to send get request to API
@@ -120,19 +115,44 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
     return Stock.ohlc(stockid);
   };
 
-  $scope.showStock = function(id, index) {
+  $scope.deleteAlert = function(id, index) {
+    console.log(Stock);
     var confirm = $mdDialog.confirm()
-      .title($scope.getStockData())
-      .textContent('All of the banks have agreed to forgive you your debts.')
-      .ariaLabel('Lucky day')
-      .targetEvent(id)
-      .ok('Please do it!')
-      .cancel('Sounds like a scam');
-    $mdDialog.show(confirm).then(function() {
-      $scope.status = 'You decided to get rid of your debt.';
-    }, function() {
-      $scope.status = 'You decided to keep your debt.';
-    });
+      .title('Are you sure you want to delete ' + '?')
+      .textContent()
+      .ariaLabel('test')
+      .targetEvent()
+      .ok('Confirm')
+      .cancel('Cancel');
+      $mdDialog.show(confirm)
+        .then(function() {
+          console.log('Stock Deleted');
+          $scope.deleteStock(id, index);
+        }, function() {
+          console.log('Deletion Cancelled');
+        });
+  };
+
+  $scope.showStock = function(id, index) {
+    var test = $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
+      .then(function(result) {
+        return (result);
+      });
+    console.log(test);
+    var confirm = $mdDialog.confirm()
+      .title($scope.newCompany)
+      .textContent(test.stock)
+      .ariaLabel('Aria Label')
+      .targetEvent()
+      .ok('Confirm')
+      .cancel('Cancel');
+    $mdDialog.show(confirm)
+      .then(function() {
+        console.log('confirm ' + $scope.newCompany.text);
+        $scope.createStock();
+      }, function() {
+        console.log('cancel ' + $scope.newCompany.text);
+      });
   };
 
 }]);
