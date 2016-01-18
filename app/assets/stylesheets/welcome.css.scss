@@ -11,19 +11,18 @@ $test-btn-2-hover: #009688;
 nav {
 
   .container-fluid {
-    color: white;
-
-    a:focus, a:hover {
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: white;
-    }
 
     .md-raised.md-button.md-ink-ripple {
       color: white;
       background-color: $test-btn-2 !important;
+
+      a:visited {
+        color: white;
+      }
+
+      a:focus, a:hover {
+        text-decoration: none;
+      }
     }
 
     .md-raised.md-button.md-ink-ripple:not([disabled]):hover {
