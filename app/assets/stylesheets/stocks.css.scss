@@ -11,6 +11,7 @@ html, body {
 
     #everything {
       margin-top: 25px;
+      height: 100%;
 
       .secondary-btn {
         color: $primary-btn-color;
@@ -20,27 +21,12 @@ html, body {
         color: $secondary-btn-color;
       }
 
+      #searchSymbol {
+      }
+
       #stockStuff {
         padding-left: 50px;
         max-widht: 1170px;
-
-        // .secondary-btn {
-        //   color: $primary-btn-color;
-        // }
-
-        // .flat-btn {
-        //   color: $secondary-btn-color;
-        // }
-
-        #searchSymbol {
-          // .secondary-btn {
-          //   color: $primary-btn-color;
-          // }
-
-          div#select2-drop-mask.select2-drop-mask {
-            width: 200px;
-          }
-        }
 
         .allStocks {
 
