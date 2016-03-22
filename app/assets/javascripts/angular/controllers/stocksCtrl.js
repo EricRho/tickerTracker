@@ -115,22 +115,54 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
     return Stock.ohlc(stockid);
   };
 
+  var alert;
+  $scope.showAlert = showAlert;
+  // Internal method
+  function showAlert() {
+    alert = $mdDialog.alert({
+      title: 'Attention',
+      textContent: 'This is an example of how easy dialogs can be!',
+      ok: 'Close'
+    });
+    $mdDialog
+      .show(alert)
+      .finally(function() {
+        alert = undefined;
+      });
+  }
+
+  // $scope.deleteAlert = function(id, index) {
+  //   console.log('test delete');
+  //   alert = $mdDialog.alert({
+  //     clickOutsideToClose: true,
+  //     title: id,
+  //     ok: 'Yes',
+  //     cancel: 'No'
+  //   });
+  //   $mdDialog
+  //     .show(alert)
+  //     .finally(function() {
+  //       alert = undefined;
+  //     }); 
+  // };
+
+
   $scope.deleteAlert = function(id, index) {
     console.log(Stock);
     var confirm = $mdDialog.confirm()
-      .title('Are you sure you want to delete ' + '?')
-      .textContent()
+      .title('Alert!')
+      .content('Are you sure you want to delete this stock?')
       .ariaLabel('test')
       .targetEvent()
       .ok('Confirm')
       .cancel('Cancel');
-      $mdDialog.show(confirm)
-        .then(function() {
-          console.log('Stock Deleted');
-          $scope.deleteStock(id, index);
-        }, function() {
-          console.log('Deletion Cancelled');
-        });
+    $mdDialog.show(confirm)
+      .then(function() {
+        console.log('Stock Deleted');
+        $scope.deleteStock(id, index);
+      }, function() {
+        console.log('Deletion Cancelled');
+      });
   };
 
   $scope.showStock = function(id, index) {
@@ -154,5 +186,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
         console.log('cancel ' + $scope.newCompany.text);
       });
   };
+
+
 
 }]);

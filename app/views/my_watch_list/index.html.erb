@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container' id='popupContainer'>
   <div  id='everything' ng-controller='stocksCtrl'>
 
     <div class='col-lg-2' id='searchSymbol' ng-controller='clockCtrl'>
@@ -25,13 +25,13 @@
 
       <div class='allStocks' ng-cloak>
         <md-content>
-          <md-tabs class='md-dynamic-height md-border-bottom'>
+          <md-tabs md-dynamic-height='true' style='height: 900px' class='md-dynamic-height md-border-bottom'>
 
             <!-- Profile Tab -->
-            <md-tab label='Profile'>
+            <md-tab style='height:900px;' label='Profile'>
               <md-content id='profileTab' class='md-padding'>
                 <h1 class='md-display-2'>My Profile</h1>
-                <md-button class='md-raised flat-btn'>Test Button</md-button>
+                <md-button class='md-raised flat-btn' ng-click='showAlert()'>Test Button</md-button>
                 <md-button class='md-raised secondary-btn' ng-click='showStock()'>Alert</md-button>
                 <h2>Welcome, <strong><%= current_user.name %></strong>!</h2>
                 <p>User profile stuff goes here</p>
