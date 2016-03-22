@@ -31,7 +31,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
   // Hack around. createStock() keeps creating an extra stock with all params
   // either undefined or nil. Throws errors and prevents creation of empty Stock
   $scope.createStock = function() {
-    debugger;
+    console.log($scope.newCompany);
     $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
       .then(function(result) {
         if (result.symbol === undefined) {
@@ -44,13 +44,23 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
       });
   };
 
+  $scope.showThing = function(index) {
+    console.log(index);
+  };
+
   // Creates watcher for when user types in newCompany search.
   // Once change is noticed, creates stock. Issue here. Creates extra emtpy Stock.
-  $scope.$watch('newCompany', function() {
-    if ($scope.newCompany !== '' && $scope.newCompany !== null) {
-      // $scope.showStock();
-      $scope.createStock();
-    }
+  // $scope.$watch('newCompany', function() {
+  //   if ($scope.newCompany != '' && $scope.newCompany != null) {
+  //     // $scope.showStock();
+  //     // $scope.createStock();
+  //   }
+  // });
+
+  $scope.count = 0;
+
+  $scope.$watchGroup('newCompany', function() {
+    $scope.count +=1;
   });
 
   // Retrieves stock information from yahoofinance.
