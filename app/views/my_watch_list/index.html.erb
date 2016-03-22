@@ -44,6 +44,9 @@
               <md-content id='stockTab' class='md-padding'>
                 <h1 class='md-display-2'>Stocks</h1>
                   <table class='table table-striped'>
+                  <div class='input-group'>
+                    <input type='text' class='form-control' ng-model='search' placeholder='Filter Your Stocks'
+                  </div>
                     <tbody>
                       <tr ng-repeat='stock in stocks | filter:search' id='stockList' ng-class='{danger: (stock.change < 0), success: (stock.change > 0)}'>
                         <td>
