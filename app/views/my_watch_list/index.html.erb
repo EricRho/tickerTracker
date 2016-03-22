@@ -1,5 +1,5 @@
-<div class='container' id='popupContainer'>
-  <div  id='everything' ng-controller='stocksCtrl'>
+<div class='container' id='popupContainer' ng-controller='stocksCtrl'>
+  <div  id='everything'>
 
     <div class='col-lg-2' id='searchSymbol' ng-controller='clockCtrl'>
       <div id='clock'>
@@ -7,6 +7,7 @@
       </div>
       <form>
         <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search NASDAQ' ng-require='true' style='width: 200px;'>
+        <!-- <md-button class='md-raised secondary-btn' ng-click='showStock()'>Submit</md-button> -->
         <md-button class='md-raised secondary-btn' ng-click='showStock()'>Submit</md-button>
       </form>
     </div>

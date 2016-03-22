@@ -31,6 +31,7 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
   // Hack around. createStock() keeps creating an extra stock with all params
   // either undefined or nil. Throws errors and prevents creation of empty Stock
   $scope.createStock = function() {
+    debugger;
     $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
       .then(function(result) {
         if (result.symbol === undefined) {
@@ -45,11 +46,12 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
 
   // Creates watcher for when user types in newCompany search.
   // Once change is noticed, creates stock. Issue here. Creates extra emtpy Stock.
-  // $scope.$watch('newCompany', function() {
-  //   if ($scope.newCompany != '' && $scope.newCompany != null) {
-  //     $scope.showStock();
-  //   }
-  // });
+  $scope.$watch('newCompany', function() {
+    if ($scope.newCompany !== '' && $scope.newCompany !== null) {
+      // $scope.showStock();
+      $scope.createStock();
+    }
+  });
 
   // Retrieves stock information from yahoofinance.
   // using $http to send get request to API
@@ -115,38 +117,6 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
     return Stock.ohlc(stockid);
   };
 
-  var alert;
-  $scope.showAlert = showAlert;
-  // Internal method
-  function showAlert() {
-    alert = $mdDialog.alert({
-      title: 'Attention',
-      textContent: 'This is an example of how easy dialogs can be!',
-      ok: 'Close'
-    });
-    $mdDialog
-      .show(alert)
-      .finally(function() {
-        alert = undefined;
-      });
-  }
-
-  // $scope.deleteAlert = function(id, index) {
-  //   console.log('test delete');
-  //   alert = $mdDialog.alert({
-  //     clickOutsideToClose: true,
-  //     title: id,
-  //     ok: 'Yes',
-  //     cancel: 'No'
-  //   });
-  //   $mdDialog
-  //     .show(alert)
-  //     .finally(function() {
-  //       alert = undefined;
-  //     }); 
-  // };
-
-
   $scope.deleteAlert = function(id, index) {
     console.log(Stock);
     var confirm = $mdDialog.confirm()
@@ -165,28 +135,26 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
       });
   };
 
-  $scope.showStock = function(id, index) {
-    var test = $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
-      .then(function(result) {
-        return (result);
-      });
-    console.log(test);
-    var confirm = $mdDialog.confirm()
-      .title($scope.newCompany)
-      .textContent(test.stock)
-      .ariaLabel('Aria Label')
-      .targetEvent()
-      .ok('Confirm')
-      .cancel('Cancel');
-    $mdDialog.show(confirm)
-      .then(function() {
-        console.log('confirm ' + $scope.newCompany.text);
-        $scope.createStock();
-      }, function() {
-        console.log('cancel ' + $scope.newCompany.text);
-      });
-  };
-
-
+  // $scope.showStock = function(id, index) {
+  //   var test = $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
+  //     .then(function(result) {
+  //       return (result);
+  //     });
+  //   console.log(test);
+  //   var confirm = $mdDialog.confirm()
+  //     .title($scope.newCompany)
+  //     .textContent(test.stock)
+  //     .ariaLabel('Aria Label')
+  //     .targetEvent()
+  //     .ok('Confirm')
+  //     .cancel('Cancel');
+  //   $mdDialog.show(confirm)
+  //     .then(function() {
+  //       console.log('confirm ' + $scope.newCompany.text);
+  //       $scope.createStock();
+  //     }, function() {
+  //       console.log('cancel ' + $scope.newCompany.text);
+  //     });
+  // };
 
 }]);
