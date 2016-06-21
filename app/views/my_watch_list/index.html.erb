@@ -5,12 +5,10 @@
       <div id='clock'>
         {{ clock | date:'medium' }}
       </div>
-      <!-- <form class='simple-form'> -->
-        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search NASDAQ' ng-require='true' style='width: 200px;'>
-        <!-- <md-button class='md-raised secondary-btn' ng-click='showThing()'>Submit</md-button> -->
-        <h5>{{newCompany}}</h5>
-        <p>{{count}}</p>
-      <!-- </form> -->
+
+      <div id='findSymbol' class='span2'>
+        <input ui-select2='select2Options' ng-model='newCompany' data-placeholder='Search Company' ng-required='true' style='width: 200px'>
+      </div>
     </div>
 
     <div class='col-lg-8' id='stockStuff'>
