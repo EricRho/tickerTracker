@@ -32,7 +32,8 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
   // either undefined or nil. Throws errors and prevents creation of empty Stock
   $scope.createStock = function() {
     console.log($scope.newCompany);
-    $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
+    // $scope.getStockData($filter('uppercase')($scope.newCompany.symbol))
+    $scope.getStockData($filter('uppercase')($scope.compToAdd.symbol))
       .then(function(result) {
         if (result.symbol === undefined) {
           $scope.error = true;
@@ -48,14 +49,27 @@ app.controller('stocksCtrl', ['$scope', 'Stock', 'sessionService', '$filter', '$
     console.log(index);
   };
 
+  $scope.addCompany = function(newCompany) {
+    console.log('newCompany: ', $scope.newCompany);
+    // alert(newCompany);
+    $scope.compToAdd = newCompany;
+    console.log(newCompany);
+    if ($scope.compToAdd !== '' && $scope.compToAdd !== null) {
+      $scope.createStock();
+    }    
+  };
+
   // Creates watcher for when user types in newCompany search.
   // Once change is noticed, creates stock. Issue here. Creates extra emtpy Stock.
-  // $scope.$watch('newCompany', function() {
-  //   if ($scope.newCompany != '' && $scope.newCompany != null) {
-  //     // $scope.showStock();
-  //     // $scope.createStock();
-  //   }
-  // });
+  $scope.$watch('newCompany', function() {
+    console.log($scope.newCompany);
+    // $scope.newCompany = '';
+
+    // if ($scope.newCompany !== '' && $scope.newCompany != null) {
+      // $scope.showStock();
+      // $scope.createStock();
+    // }
+  });
 
   $scope.count = 0;
 
